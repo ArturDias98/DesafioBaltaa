@@ -1,20 +1,25 @@
 ﻿using BaltaDesafioBlazor.Domain.Entities;
 using BaltaDesafioBlazor.Domain.Repositories;
 using BaltaDesafioBlazor.Infra.Data;
+using BaltaDesafioBlazor.Infra.Expressions;
 using Microsoft.EntityFrameworkCore;
 
 namespace BaltaDesafioBlazor.Infra.Repositories;
 
 internal class LocalityRepository(DataContext dataContext) : ILocalityRepository
 {
-    public async Task<bool> IsIdAvailableAsync(string id, CancellationToken cancellationToken = default)
+    public Task<bool> IsIdAvailableAsync(string id, CancellationToken cancellationToken = default)
     {
-        return await dataContext.Localities.CountAsync(i => i.Id == id, cancellationToken) == 0;
+        return dataContext
+            .Localities
+            .IsIdAvailableAsync(id, cancellationToken);
     }
 
-    public async Task<bool> IsLocalityAvailableAsync(string city, string state, CancellationToken cancellationToken = default)
+    public Task<bool> IsLocalityAvailableAsync(string city, string state, CancellationToken cancellationToken = default)
     {
-        return await dataContext.Localities.CountAsync(i => i.City == city && i.State == state, cancellationToken) == 0;
+        return dataContext
+            .Localities
+            .IsLocalityAvailableAsync(city, state, cancellationToken);
     }
 
     public async Task<Locality?> GetAsync(string id, CancellationToken cancellationToken = default)
