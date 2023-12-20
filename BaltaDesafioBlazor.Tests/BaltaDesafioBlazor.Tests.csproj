@@ -16,4 +16,10 @@
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BaltaDesafioBlazor.Domain\BaltaDesafioBlazor.Domain.csproj" />
+    <ProjectReference Include="..\BaltaDesafioBlazor.Infra\BaltaDesafioBlazor.Infra.csproj" />
+    <ProjectReference Include="..\BaltaDesafioBlazor.Shared\BaltaDesafioBlazor.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
