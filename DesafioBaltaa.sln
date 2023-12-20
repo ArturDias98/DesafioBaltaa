@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaltaDesafioBlazor.Shared",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaltaDesafioBlazor", "Desafio\BaltaDesafioBlazor.csproj", "{89A97BD7-7C42-4122-94F4-2DFB30F76348}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{044EE1C5-B518-4ED0-AA56-AB4B7BA6D7DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{A5F87A72-5896-4281-B344-50314923248D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{85B60E60-B3BE-4F01-A8EE-80CFBE42600A} = {044EE1C5-B518-4ED0-AA56-AB4B7BA6D7DA}
+		{87D299D7-F382-4130-B6B7-1B11E81F4DA3} = {044EE1C5-B518-4ED0-AA56-AB4B7BA6D7DA}
+		{B40F5460-3475-4D86-9C95-3A9C9238EF5F} = {044EE1C5-B518-4ED0-AA56-AB4B7BA6D7DA}
+		{89A97BD7-7C42-4122-94F4-2DFB30F76348} = {A5F87A72-5896-4281-B344-50314923248D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F29CF6A-1659-4041-AE77-AF2F2D3D857D}
 	EndGlobalSection
 EndGlobal
