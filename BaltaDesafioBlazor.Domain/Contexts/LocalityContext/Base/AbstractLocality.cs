@@ -1,4 +1,4 @@
-﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Validators;
+﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Validators.Command;
 using FluentValidation.Results;
 
 namespace BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Base;

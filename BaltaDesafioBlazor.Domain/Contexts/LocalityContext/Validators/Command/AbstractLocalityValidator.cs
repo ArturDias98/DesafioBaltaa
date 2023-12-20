@@ -2,7 +2,7 @@
 using BaltaDesafioBlazor.Domain.EntityConstants;
 using FluentValidation;
 
-namespace BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Validators;
+namespace BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Validators.Command;
 
 internal class AbstractLocalityValidator : AbstractValidator<AbstractLocality>
 {

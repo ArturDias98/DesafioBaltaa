@@ -7,6 +7,16 @@ namespace BaltaDesafioBlazor.Infra.Repositories;
 
 internal class LocalityRepository(DataContext dataContext) : ILocalityRepository
 {
+    public async Task<bool> IsIdAvailableAsync(string id, CancellationToken cancellationToken = default)
+    {
+        return await dataContext.Localities.CountAsync(i => i.Id == id, cancellationToken) == 0;
+    }
+
+    public async Task<bool> IsLocalityAvailableAsync(string city, string state, CancellationToken cancellationToken = default)
+    {
+        return await dataContext.Localities.CountAsync(i => i.City == city && i.State == state, cancellationToken) == 0;
+    }
+
     public async Task<Locality?> GetAsync(string id, CancellationToken cancellationToken = default)
     {
         try
