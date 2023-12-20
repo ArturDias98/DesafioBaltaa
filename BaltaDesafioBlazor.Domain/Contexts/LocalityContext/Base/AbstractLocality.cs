@@ -7,9 +7,9 @@ public abstract class AbstractLocality
 {
     protected AbstractLocality(string id, string city, string state)
     {
-        Id = id;
-        City = city;
-        State = state;
+        Id = id.Trim();
+        City = city.Trim();
+        State = state.Trim();
     }
 
     public string Id { get;}

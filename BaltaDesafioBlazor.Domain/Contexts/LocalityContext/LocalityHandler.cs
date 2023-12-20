@@ -1,5 +1,6 @@
 ﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Create;
 using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Delete;
+using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Queries;
 using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Update;
 using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Validators.Handler;
 using BaltaDesafioBlazor.Domain.Contracts;
@@ -9,7 +10,7 @@ using BaltaDesafioBlazor.Domain.Repositories;
 
 namespace BaltaDesafioBlazor.Domain.Contexts.LocalityContext;
 
-public sealed class LocalityHandler(ILocalityRepository localityRepository) :
+public sealed class LocalityHandler(ILocalityRepository repository, ILocalityQueryHandler queryHandler) :
     ICommandHandler<CreateLocalityCommand, GenericCommandResult>,
     ICommandHandler<UpdateLocalityCommand, GenericCommandResult>,
     ICommandHandler<DeleteLocalityCommand, GenericCommandResult>
@@ -21,7 +22,7 @@ public sealed class LocalityHandler(ILocalityRepository localityRepository) :
 
         try
         {
-            var validate = await new CreateLocalityHandlerValidator(localityRepository)
+            var validate = await new CreateLocalityHandlerValidator(repository)
              .ValidateAsync(command, cancellationToken)
              .ConfigureAwait(false);
 
@@ -31,7 +32,7 @@ public sealed class LocalityHandler(ILocalityRepository localityRepository) :
             }
 
             var locality = new Locality(command.Id, command.City, command.State);
-            var result = await localityRepository
+            var result = await repository
                 .CreateAsync(locality, cancellationToken)
                 .ConfigureAwait(false);
 
@@ -50,26 +51,42 @@ public sealed class LocalityHandler(ILocalityRepository localityRepository) :
         if (!command.IsValid)
             return GenericCommandResult.ErrorResult(command.Errors);
 
-        bool result;
+        bool result = false;
 
-        var locality = new Locality(command.Id, command.City, command.State);
-
-        if (command.OldId == command.Id)
+        try
         {
-            result = await localityRepository
-                .UpdateAsync(locality, cancellationToken)
-                .ConfigureAwait(false);
-        }
-        else
-        {
-            result = await localityRepository
-                .DeleteAndUpdateAsync(command.OldId, locality, cancellationToken)
-                .ConfigureAwait(false);
-        }
+            var locality = new Locality(command.Id, command.City, command.State);
 
-        return result
-            ? GenericCommandResult.SuccessResult(locality.Id)
-            : GenericCommandResult.ErrorResult(["Erro ao atualizar localidade"]);
+            var validate = await new UpdateLocalityHandlerValidator(repository, queryHandler)
+                .ValidateAsync(command, cancellationToken)
+                .ConfigureAwait(false);
+
+            if (!validate.IsValid)
+            {
+                return GenericCommandResult.ErrorResult(validate.GetErrors());
+            }
+
+            if (command.OldId == command.Id)
+            {
+                result = await repository
+                    .UpdateAsync(locality, cancellationToken)
+                    .ConfigureAwait(false);
+            }
+            else
+            {
+                result = await repository
+                    .DeleteAndUpdateAsync(command.OldId, locality, cancellationToken)
+                    .ConfigureAwait(false);
+            }
+
+            return result
+                ? GenericCommandResult.SuccessResult(locality.Id)
+                : GenericCommandResult.ErrorResult(["Erro ao atualizar localidade"]);
+        }
+        catch (Exception)
+        {
+            return GenericCommandResult.ErrorResult(["Não foi possível realizar a operação de atualizar localidade"]);
+        }
     }
 
     public async Task<GenericCommandResult> ExecuteAsync(DeleteLocalityCommand command, CancellationToken cancellationToken = default)
@@ -77,7 +94,7 @@ public sealed class LocalityHandler(ILocalityRepository localityRepository) :
         if (!command.IsValid)
             return GenericCommandResult.ErrorResult(command.Errors);
 
-        var result = await localityRepository
+        var result = await repository
             .DeleteAsync(command.Id, cancellationToken)
             .ConfigureAwait(false);
 
