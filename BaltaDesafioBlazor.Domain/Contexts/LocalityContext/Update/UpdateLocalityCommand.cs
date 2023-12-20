@@ -6,7 +6,7 @@ namespace BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Update;
 
 public sealed class UpdateLocalityCommand(string oldId, string newId, string city, string state) : AbstractLocality(newId, city, state), ICommand
 {
-    public string OldId { get; } = oldId;
+    public string OldId { get; } = oldId.Trim();
 
     public bool IsValid
         => Validate().IsValid;

@@ -1,13 +1,16 @@
 ﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Queries;
 using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Update;
 using BaltaDesafioBlazor.Domain.Repositories;
+using BaltaDesafioBlazor.Shared.Models.Locality;
 using FluentValidation;
 
 namespace BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Validators.Handler;
 
 internal class UpdateLocalityHandlerValidator : AbstractValidator<UpdateLocalityCommand>
 {
-    public UpdateLocalityHandlerValidator(ILocalityRepository repository, ILocalityQueryHandler queryHandler)
+    public UpdateLocalityHandlerValidator(
+        ILocalityRepository repository, 
+        ILocalityQueryHandler queryHandler)
     {
         RuleFor(i => i)
             .MustAsync(async (comand, token) =>
@@ -24,10 +27,10 @@ internal class UpdateLocalityHandlerValidator : AbstractValidator<UpdateLocality
             .WithMessage("Identificador não disponível");
 
         RuleFor(i => i)
-            .MustAsync(async (comand, token) =>
+            .MustAsync(async (command, token) =>
             {
                 var result = await queryHandler
-                .GetLocalityAsync(comand.Id, token)
+                .GetLocalityAsync(command.Id, token)
                 .ConfigureAwait(false);
 
                 if (!result.Success)
@@ -37,14 +40,30 @@ internal class UpdateLocalityHandlerValidator : AbstractValidator<UpdateLocality
 
                 var locality = result.Result;
 
-                if (locality.City.Equals(comand.City) && locality.State.Equals(comand.State))
+                if (LocalityHasChanged(locality, command.City, command.State))
                 {
-                    return true;
+                    return await repository
+                     .IsLocalityAvailableAsync(command.City, command.State, token)
+                     .ConfigureAwait(false);
                 }
 
-                return await repository
-                .IsLocalityAvailableAsync(comand.City, comand.State, token)
-                .ConfigureAwait(false);
-            });
+                return true;
+            })
+            .WithMessage("Localidade já cadastrada");
+    }
+
+    private static bool LocalityHasChanged(LocalityModel locality, string city, string state)
+    {
+        if (!string.Equals(locality.City, city))
+        {
+            return true;
+        }
+
+        if (!string.Equals(locality.State, state))
+        {
+            return true;
+        }
+
+       return false;
     }
 }
