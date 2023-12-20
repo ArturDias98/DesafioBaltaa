@@ -27,4 +27,19 @@ public static class LocalityExpressions
     {
         return !await query.AnyAsync(IsLocalityEqual(city, state), cancellationToken);
     }
+
+    public static bool IsIdAvailable(
+        this IQueryable<Locality> query,
+        string id)
+    {
+        return !query.Any(i => i.Id == id);
+    }
+
+    public static bool IsLocalityAvailable(
+        this IQueryable<Locality> query,
+        string city,
+        string state)
+    {
+        return !query.Any(IsLocalityEqual(city, state));
+    }
 }

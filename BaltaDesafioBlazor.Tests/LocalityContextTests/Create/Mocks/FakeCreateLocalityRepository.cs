@@ -35,16 +35,18 @@ internal class FakeCreateLocalityRepository : ILocalityRepository
 
     public Task<bool> IsIdAvailableAsync(string id, CancellationToken cancellationToken = default)
     {
-        return _localities
+        return Task.FromResult(
+            _localities
             .AsQueryable()
-            .IsIdAvailableAsync(id, cancellationToken);
+            .IsIdAvailable(id));
     }
 
     public Task<bool> IsLocalityAvailableAsync(string city, string state, CancellationToken cancellationToken = default)
     {
-        return _localities
+        return Task.FromResult(
+            _localities
             .AsQueryable()
-            .IsLocalityAvailableAsync(city, state, cancellationToken);
+            .IsLocalityAvailable(city, state));
     }
 
     public Task<bool> UpdateAsync(Locality locality, CancellationToken cancellationToken = default)
