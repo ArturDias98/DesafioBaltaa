@@ -6,15 +6,18 @@
     <Search Placeholder="Buscar código"
             AllowClear="true"
             ValueChanged="OnSearchCode"
-            WrapperStyle="width: 200px;" />
+            WrapperStyle="width: 200px;" 
+            Disabled="_loading"/>
     <Search Placeholder="Buscar estado"
             AllowClear="true"
             ValueChanged="OnSearchState"
-            WrapperStyle="width: 200px;" />
+            WrapperStyle="width: 200px;" 
+            Disabled="_loading" />
     <Search Placeholder="Buscar cidade"
             AllowClear="true"
             ValueChanged="OnSearchCity"
-            WrapperStyle="width: 200px;" />
+            WrapperStyle="width: 200px;" 
+            Disabled="_loading" />
     <AddLocalityDialog OnAdd="LoadAsync" />
 </div>
 

@@ -107,13 +107,4 @@ public partial class LocalityList
     [Inject] IMessageService MessageService { get; set; } = null!;
 
     [CascadingParameter] CancellationToken Token { get; set; }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await LoadAsync()
-                .ConfigureAwait(false);
-        }
-    }
 }
