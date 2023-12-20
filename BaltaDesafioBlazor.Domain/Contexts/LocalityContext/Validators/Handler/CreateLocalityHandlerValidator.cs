@@ -1,4 +1,4 @@
-﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Create;
+﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Commands.Create;
 using BaltaDesafioBlazor.Domain.Repositories;
 using FluentValidation;
 

@@ -1,7 +1,7 @@
 ﻿using BaltaDesafioBlazor.Domain.Contracts;
 using BaltaDesafioBlazor.Domain.EntityConstants;
 
-namespace BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Delete;
+namespace BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Commands.Delete;
 
 public sealed class DeleteLocalityCommand(string id) : ICommand
 {

@@ -1,5 +1,5 @@
-﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Queries;
-using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Update;
+﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Commands.Update;
+using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Queries;
 using BaltaDesafioBlazor.Domain.Repositories;
 using BaltaDesafioBlazor.Shared.Models.Locality;
 using FluentValidation;

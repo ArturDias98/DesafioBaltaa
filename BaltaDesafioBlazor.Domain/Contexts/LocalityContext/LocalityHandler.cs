@@ -1,7 +1,7 @@
-﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Create;
-using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Delete;
+﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Commands.Create;
+using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Commands.Delete;
+using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Commands.Update;
 using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Queries;
-using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Update;
 using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Validators.Handler;
 using BaltaDesafioBlazor.Domain.Contracts;
 using BaltaDesafioBlazor.Domain.Entities;

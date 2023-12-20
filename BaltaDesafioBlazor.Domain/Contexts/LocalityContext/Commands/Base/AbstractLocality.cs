@@ -1,7 +1,7 @@
 ﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Validators.Command;
 using FluentValidation.Results;
 
-namespace BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Base;
+namespace BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Commands.Base;
 
 public abstract class AbstractLocality
 {
@@ -12,7 +12,7 @@ public abstract class AbstractLocality
         State = state.Trim();
     }
 
-    public string Id { get;}
+    public string Id { get; }
     public string City { get; }
     public string State { get; set; }
 

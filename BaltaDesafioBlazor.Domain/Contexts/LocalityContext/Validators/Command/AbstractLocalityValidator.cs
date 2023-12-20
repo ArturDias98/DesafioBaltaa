@@ -1,4 +1,4 @@
-﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Base;
+﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Commands.Base;
 using BaltaDesafioBlazor.Domain.EntityConstants;
 using FluentValidation;
 

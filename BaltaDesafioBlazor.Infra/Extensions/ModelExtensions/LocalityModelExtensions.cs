@@ -1,5 +1,5 @@
-﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Create;
-using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Update;
+﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Commands.Create;
+using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Commands.Update;
 using BaltaDesafioBlazor.Shared.Models.Locality;
 
 namespace BaltaDesafioBlazor.Infra.Extensions.ModelExtensions;

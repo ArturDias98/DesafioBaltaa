@@ -1,7 +1,7 @@
 ﻿using AntDesign;
 using AntDesign.TableModels;
 using BaltaDesafioBlazor.Domain.Contexts.LocalityContext;
-using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Delete;
+using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Commands.Delete;
 using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Queries;
 using BaltaDesafioBlazor.Shared.Models.Locality;
 using Microsoft.AspNetCore.Components;
