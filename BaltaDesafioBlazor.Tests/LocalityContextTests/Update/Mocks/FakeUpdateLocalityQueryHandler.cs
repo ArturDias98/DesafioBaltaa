@@ -13,6 +13,18 @@ internal class FakeUpdateLocalityQueryHandler : ILocalityQueryHandler
 
     public Task<QueryResultModel<LocalityModel>> GetLocalityAsync(string id, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var get = FakeDataContext.Context
+            .Where(i => i.Id == id)
+            .Select(i => new LocalityModel
+            {
+                Id = i.Id,
+                City = i.City,
+                State = i.State,
+            })
+            .FirstOrDefault();
+
+        var success = get is not null;
+
+        return Task.FromResult<QueryResultModel<LocalityModel>>(new(success, get ?? new()));
     }
 }

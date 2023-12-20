@@ -9,7 +9,7 @@ namespace BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Validators.Handler;
 internal class UpdateLocalityHandlerValidator : AbstractValidator<UpdateLocalityCommand>
 {
     public UpdateLocalityHandlerValidator(
-        ILocalityRepository repository, 
+        ILocalityRepository repository,
         ILocalityQueryHandler queryHandler)
     {
         RuleFor(i => i)
@@ -30,7 +30,7 @@ internal class UpdateLocalityHandlerValidator : AbstractValidator<UpdateLocality
             .MustAsync(async (command, token) =>
             {
                 var result = await queryHandler
-                .GetLocalityAsync(command.Id, token)
+                .GetLocalityAsync(command.OldId, token)
                 .ConfigureAwait(false);
 
                 if (!result.Success)
@@ -64,6 +64,6 @@ internal class UpdateLocalityHandlerValidator : AbstractValidator<UpdateLocality
             return true;
         }
 
-       return false;
+        return false;
     }
 }
