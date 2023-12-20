@@ -1,4 +1,4 @@
-﻿using BaltaDesafioBlazor.Domain.Handlers.Queries;
+﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Queries;
 using BaltaDesafioBlazor.Domain.Repositories;
 using BaltaDesafioBlazor.Infra.Data;
 using BaltaDesafioBlazor.Infra.Queries;

@@ -5,7 +5,7 @@ using BaltaDesafioBlazor.Domain.Contracts;
 using BaltaDesafioBlazor.Domain.Entities;
 using BaltaDesafioBlazor.Domain.Repositories;
 
-namespace BaltaDesafioBlazor.Domain.Handlers.Commands;
+namespace BaltaDesafioBlazor.Domain.Contexts.LocalityContext;
 
 public sealed class LocalityHandler(ILocalityRepository localityRepository) :
     ICommandHandler<CreateLocalityCommand, GenericCommandResult>,

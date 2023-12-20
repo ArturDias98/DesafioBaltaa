@@ -1,4 +1,4 @@
-﻿using BaltaDesafioBlazor.Domain.Handlers.Commands;
+﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BaltaDesafioBlazor.Domain.Extensions;

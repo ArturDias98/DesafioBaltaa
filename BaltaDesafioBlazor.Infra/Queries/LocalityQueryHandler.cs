@@ -1,4 +1,4 @@
-﻿using BaltaDesafioBlazor.Domain.Handlers.Queries;
+﻿using BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Queries;
 using BaltaDesafioBlazor.Infra.Data;
 using BaltaDesafioBlazor.Shared.Models.Locality;
 using BaltaDesafioBlazor.Shared.Models.Result;

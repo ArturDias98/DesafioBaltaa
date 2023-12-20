@@ -1,7 +1,7 @@
 ﻿using BaltaDesafioBlazor.Shared.Models.Locality;
 using BaltaDesafioBlazor.Shared.Models.Result;
 
-namespace BaltaDesafioBlazor.Domain.Handlers.Queries;
+namespace BaltaDesafioBlazor.Domain.Contexts.LocalityContext.Queries;
 
 public interface ILocalityQueryHandler
 {
