@@ -4,6 +4,7 @@ using BaltaDesafioBlazor.Areas.Identity;
 using BaltaDesafioBlazor.Infra.Data;
 using BaltaDesafioBlazor.Infra.Extensions;
 using BaltaDesafioBlazor.Domain.Extensions;
+using BaltaDesafioBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+builder.Services.AddScoped<PopUpErrorsService>();
 
 var app = builder.Build();
 

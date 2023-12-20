@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{044EE1C5-B51
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{A5F87A72-5896-4281-B344-50314923248D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaltaDesafioBlazor.Tests", "BaltaDesafioBlazor.Tests\BaltaDesafioBlazor.Tests.csproj", "{A1700710-4507-48E6-8ECB-A0ED0FC5A632}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaltaDesafioBlazor.Tests", "BaltaDesafioBlazor.Tests\BaltaDesafioBlazor.Tests.csproj", "{A1700710-4507-48E6-8ECB-A0ED0FC5A632}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
