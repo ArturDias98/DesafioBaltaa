@@ -5,9 +5,9 @@ namespace BaltaDesafioBlazor.Services;
 
 internal class PopUpErrorsService(IConfirmService confirmService)
 {
-    public async Task ShowErrors(IReadOnlyCollection<string> errors)
+    public async Task ShowErrors(IReadOnlyCollection<string> errors, string title)
     {
-        var builder = new StringBuilder()
+        /*var builder = new StringBuilder()
             .Append("<ul>");
 
         foreach (var error in errors)
@@ -18,8 +18,18 @@ internal class PopUpErrorsService(IConfirmService confirmService)
                 .Append("</li>");
         }
 
-        builder.Append("</ul>");
+        builder.Append("</ul>");*/
 
-        await confirmService.Show(builder.ToString(), "Erros", ConfirmButtons.OK);
+        var builder = new StringBuilder();
+
+        foreach (var error in errors)
+        {
+            builder.AppendLine(error);
+        }
+        await confirmService.Show(
+            builder.ToString(),
+            title,
+            ConfirmButtons.OK,
+            ConfirmIcon.Error);
     }
 }

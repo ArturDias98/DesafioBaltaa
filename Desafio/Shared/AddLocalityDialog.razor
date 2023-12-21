@@ -1,10 +1,12 @@
 ﻿@using BaltaDesafioBlazor.Domain.Contexts.LocalityContext
 @using BaltaDesafioBlazor.Shared.Models.Locality
 @using BaltaDesafioBlazor.Infra.Extensions.ModelExtensions
+@using BaltaDesafioBlazor.Services
 
 @inject LocalityHandler Handler
 @inject NavigationManager NavigationManager
 @inject IMessageService MessageService
+@inject PopUpErrorsService DisplayErrors
 
 <AuthorizeView>
     <Button Icon="@AntDesign.IconType.Outline.Plus"
@@ -49,8 +51,8 @@
         }
         else
         {
-            await MessageService
-                .Error("Erro ao adicionar localidade")
+            await DisplayErrors
+                .ShowErrors(result.Errors, "Erro ao adicionar localidade")
                 .ConfigureAwait(false);
         }
     }
