@@ -4,6 +4,20 @@
 
 <PageTitle>Desafio Blazor</PageTitle>
 
+<AuthorizeView>
+    <NotAuthorized>
+        <Alert Type="@AlertType.Warning"
+               ShowIcon="true">
+            <MessageTemplate>
+                <Text class="fs-6">
+                    Somente usuários autenticados podem realizar alterações no site.
+                    <a href="Identity/Account/Login">Clique</a> para realizar o login
+                </Text>
+            </MessageTemplate>
+        </Alert>
+    </NotAuthorized>
+</AuthorizeView>
+
 <CascadingValue Value="tokenSource.Token">
     <LocalityList />
 </CascadingValue>
